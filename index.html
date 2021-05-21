@@ -4,23 +4,29 @@
 <head>
     <title>Order</title>
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href='style.css'>
 </head>
 
 <body>
 
-    <div class="popup__body">
-        <div class="popup__step">
-            <p>YOUR ORDER</p>
-            <p>SHIPPING DETAILS</p>
-            <p>PAYMENT DETAILS</p>
-            <p>CONFIRMATION</p>
+    <div class="content__body">
+        <div class="step__nav">
+            <div class="nav__step">
+                <div class="nav__text">YOUR ORDER</div>
+            </div>
+            <div class="nav__step">
+                <div class="nav__text">SHIPPING DETAILS</div>
+            </div>
+            <div class="nav__step">
+                <div class="nav__text">PAYMENT DETAILS</div>
+            </div>
+            <div class="nav__step">
+                <div class="nav__text">CONFIRMATION</div>
+            </div>
         </div>
-        <div class="popup__body__content">
-            <div id="Step1" class="popup__content">
+
+        <div class="step__content">
+            <div id="step1" class="step ">
                 <div class="left__content">
                     <div class="left__text">
                         <div class="img__laptop">
@@ -28,68 +34,170 @@
                         </div>
                     </div>
                     <div class="left__botom">
-                        <button>next</button>
                     </div>
                 </div>
                 <div class="right__content">
                     <div class="right__text">
-                        <h3>Leptop Msi Leopard</h3>
-                        <p> In stok 3</p>
-                        <h4>Prise: $1000</h4>
+                        <div class="text__header">Leptop Msi Leopard</div>
+                        <p>Экран 15.6" IPS (1920x1080) Full HD 144 Гц, матовый / Intel Core i5-10300H (2.5 - 4.5 ГГц) /
+                            RAM 16 ГБ / SSD 512 ГБ /
+                            nVidia GeForce GTX 1650 Ti, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС / 2.39 кг /
+                            черный</p>
+                        <div class="instok"> In stok 3</div>
+                        <div class="price">Prise: $1000</div>
                     </div>
                     <div class="right__botom">
-                        <button>next</button>
-                    </div>
 
-                    <!-- <div id="Step2" class="popup__content">
+                        <div id="next1" class="btn__next" onclick="nextPrev(+1)">Next Step &#8594;</div>
+                    </div>
+                </div>
+            </div>
+            <div id="step2" class="step">
                 <div class="left__content">
                     <div class="left__text">
-                        <h6>Contact details</h6>
-                        <div class="row">
-                            <form class="col s12">
-                                <div class="row">
-                                    <div class="input-field col s6">
-                                        <i class="material-icons prefix">account_circle</i>
-                                        <input id="icon_prefix" type="text" class="validate">
-                                        <label for="icon_prefix">First Name</label>
-                                    </div>
-                                    <div class="input-field col s6">
-                                        <i class="material-icons prefix">phone</i>
-                                        <input id="icon_telephone" type="tel" class="validate">
-                                        <label for="icon_telephone">Telephone</label>
-                                    </div>
+                        <form>
+                            <div class="text__header">Contact Details</div>
+                            <div class="date__cvv">
+                                <div class="input__top" data-top="Name">
+                                    <input type="text" placeholder="" />
                                 </div>
-                            </form>
-                        </div>
-                        <div class="input-field col s12">
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Email</label>
-                            <span class="helper-text" data-error="wrong" data-success="right"></span>
-                        </div>
+                                <div class="input__top" id="surname" data-top="Surname">
+                                    <input type="text" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="input__top" data-top="Email">
+                                <input type="email" placeholder="" />
+                            </div>
+                            <div class="input__top" data-top="Phone number">
+                                <input type="phone" placeholder="" />
+                            </div>
+                        </form>
                     </div>
                     <div class="left__botom">
-                        <button>privios</button>
+                        <div id="back1" class="btn__prev" onclick="nextPrev(-1)">&larr; Privios Step</div>
                     </div>
                 </div>
                 <div class="right__content">
                     <div class="right__text">
-                        <h6>Delivery details</h6>
-            
-                        <select class="browser-default">
-                            <option value="" disabled selected>Choose your country</option>
-                            <option value="1">Ucrain</option>
-                            <option value="2">US</option>
-                            <option value="3">Canada</option>
-                        </select>
+                        <form>
+                            <div class="text__header">Shipping Details</div>
+                            <select onchange="funSelected('selected1','selected2',this)">
+                                <option value="none">Choose Country</option>
+                                <option value="0">Ukrain</option>
+                                <option value="1">Canada</option>
+                                <option value="2">US</option>
+                                <option value="3">UK</option>
+                            </select>
+                            <div id="selected1">
+                                <div class="input__top" data-top="Region of Ukrain">
+                                    <input type="text" placeholder="" />
+                                </div>
+                                <div class="input__top" data-top="City">
+                                    <input type="text" placeholder="" />
+                                </div>
+                                <div class="date__cvv">
+                                    <div class="input__top" data-top="Street">
+                                        <input type="text" placeholder="" />
+                                    </div>
+                                    <div class="input__top" id="surname" data-top="№">
+                                        <input type="text" placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="selected2">
+                                <div class="input__top" data-top="Region">
+                                    <input type="text" placeholder="" />
+                                </div>
+                                <div class="input__top" data-top="City">
+                                    <input type="text" placeholder="" />
+                                </div>
+                                <div class="date__cvv">
+                                    <div class="input__top" data-top="Street">
+                                        <input type="text" placeholder="" />
+                                    </div>
+                                    <div class="input__top" id="surname" data-top="№">
+                                        <input type="text" placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="right__botom">
-                        <button>next</button>
+                        <div id="next2" class="btn__next" onclick="nextPrev(+1)">Next Step &#8594;</div>
                     </div>
-                </div> -->
                 </div>
             </div>
 
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            <div id="step3" class="step">
+                <div class="left__content">
+                    <div class="left__text">
+                        <div class="text__header">Card</div>
+                    </div>
+                    <div class="left__botom">
+                        <div id="back2" class="btn__prev" onclick="nextPrev(-1)">&larr; Privios Step</div>
+                    </div>
+                </div>
+                <div class="right__content">
+                    <div class="right__text">
+                        <form>
+                            <div class="text__header">Payment Details</div>
+                            <div class="input__top" data-top="Name on Card">
+                                <input type="text" placeholder="Vlad Nick" />
+                            </div>
+                            <div class="input__top" data-top="Card Number"
+                                title="type in the card number without spaces">
+                                <input type="text" placeholder="xxxx xxxx xxxx xxxx" />
+                            </div>
+                            <div class="date__cvv">
+                                <div class="input__top" id="year" data-top="Valid Through">
+                                    <input type="text" placeholder="01/25" />
+                                </div>
+                                <div class="input__top" id="cvv" data-top="CVV">
+                                    <input type="text" placeholder="111" />
+                                </div>
+                            </div>
+                            <button class="button__pay" onclick="nextPrev(+1)">pay<span>$1000.00</span></button>
+                        </form>
+                    </div>
+                    <div class="right__botom">
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="step4" class="step">
+                <div class="left__content">
+                    <div class="left__text">
+                        <div class="text__header">Order Details</div>
+                        <div class="order__details">
+                            <div class="order__item">
+                                <img src="https://brain.com.ua/static/images/prod_img/5/0/U0463250_big.jpg"
+                                    alt="Leopard">
+                                <div class="order__text">
+                                    Leptop Msi Leopard
+                                    <div class="price">Prise: $1000</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left__botom">
+                        <div id="back3" class="btn__prev" onclick="nextPrev(-1)"> &larr; Privios Step</div>
+                    </div>
+                </div>
+                <div class="right__content">
+                    <div class="right__text">
+                        <div class="text__header">Thanks for your order </div>
+                    </div>
+                    <div class="right__botom">
+                        <div class="btn__next">Close</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="main.js"></script>
+
 </body>
 
 </html>
