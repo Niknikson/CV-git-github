@@ -4,6 +4,9 @@
 <head>
     <title>Order</title>
     <meta charset="utf-8">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <link rel="stylesheet" href='style.css'>
 </head>
 
@@ -39,7 +42,8 @@
                 <div class="right__content">
                     <div class="right__text">
                         <div class="text__header">Leptop Msi Leopard</div>
-                        <p>Экран 15.6" IPS (1920x1080) Full HD 144 Гц, матовый / Intel Core i5-10300H (2.5 - 4.5 ГГц) /
+                        <p class="text__about">Экран 15.6" IPS (1920x1080) Full HD 144 Гц, матовый / Intel Core
+                            i5-10300H (2.5 - 4.5 ГГц) /
                             RAM 16 ГБ / SSD 512 ГБ /
                             nVidia GeForce GTX 1650 Ti, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС / 2.39 кг /
                             черный</p>
@@ -48,7 +52,7 @@
                     </div>
                     <div class="right__botom">
 
-                        <div id="next1" class="btn__next" onclick="nextPrev(+1)">Next Step &#8594;</div>
+                        <div id="next1" class="btn__prev" onclick="nextPrev(+1)">Next Step &#8594;</div>
                     </div>
                 </div>
             </div>
@@ -59,17 +63,17 @@
                             <div class="text__header">Contact Details</div>
                             <div class="date__cvv">
                                 <div class="input__top" data-top="Name">
-                                    <input type="text" placeholder="" />
+                                    <input type="text" placeholder="" onblur="requiredField(this)" required />
                                 </div>
                                 <div class="input__top" id="surname" data-top="Surname">
-                                    <input type="text" placeholder="" />
+                                    <input type="text" placeholder="" onblur="requiredField(this)" required />
                                 </div>
                             </div>
                             <div class="input__top" data-top="Email">
-                                <input type="email" placeholder="" />
+                                <input type="email" placeholder="" onblur="requiredField(this)" required />
                             </div>
                             <div class="input__top" data-top="Phone number">
-                                <input type="phone" placeholder="" />
+                                <input type="phone" placeholder="" onblur="requiredField(this)" required />
                             </div>
                         </form>
                     </div>
@@ -81,49 +85,53 @@
                     <div class="right__text">
                         <form>
                             <div class="text__header">Shipping Details</div>
-                            <select onchange="funSelected('selected1','selected2',this)">
-                                <option value="none">Choose Country</option>
+                            <select class="select__botton" onchange="createInput(this)">
                                 <option value="0">Ukrain</option>
                                 <option value="1">Canada</option>
                                 <option value="2">US</option>
                                 <option value="3">UK</option>
                             </select>
                             <div id="selected1">
-                                <div class="input__top" data-top="Region of Ukrain">
-                                    <input type="text" placeholder="" />
+                                <div class="input__top" id="afterAddInput" data-top="Region">
+                                    <input type="text" placeholder="" onblur="requiredField(this)" required />
                                 </div>
-                                <div class="input__top" data-top="City">
-                                    <input type="text" placeholder="" />
+                                <div autocomplete="off" id="removeInput">
+                                    <div class="autocomplete">
+                                        <div class="input__top" data-top="City">
+                                            <input id="myInput" type="text" name="myCountry" placeholder=""
+                                                onblur="requiredField(this)" required />
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="date__cvv">
                                     <div class="input__top" data-top="Street">
-                                        <input type="text" placeholder="" />
+                                        <input type="text" placeholder="" onblur="requiredField(this)" required />
                                     </div>
-                                    <div class="input__top" id="surname" data-top="№">
-                                        <input type="text" placeholder="" />
+                                    <div class="input__top" id="cvv" data-top="№">
+                                        <input type="text" placeholder="" onblur="requiredField(this)" required />
                                     </div>
                                 </div>
                             </div>
-                            <div id="selected2">
-                                <div class="input__top" data-top="Region">
-                                    <input type="text" placeholder="" />
+                            <!-- <div id="selected2">
+                                <div class="input__top"  data-top="Region ">
+                                    <input type="text" placeholder="" onblur="requiredField(this)" required/>
                                 </div>
-                                <div class="input__top" data-top="City">
-                                    <input type="text" placeholder="" />
+                                <div class="input__top"  data-top="City">
+                                    <input type="text" placeholder="" onblur="requiredField(this)" required/>
                                 </div>
                                 <div class="date__cvv">
-                                    <div class="input__top" data-top="Street">
-                                        <input type="text" placeholder="" />
+                                    <div class="input__top"  data-top="Street">
+                                        <input type="text" placeholder="" onblur="requiredField(this)" required/>
                                     </div>
-                                    <div class="input__top" id="surname" data-top="№">
-                                        <input type="text" placeholder="" />
+                                    <div class="input__top" id="cvv" data-top="№">
+                                        <input type="text" placeholder="" onblur="requiredField(this)" required/>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </form>
                     </div>
                     <div class="right__botom">
-                        <div id="next2" class="btn__next" onclick="nextPrev(+1)">Next Step &#8594;</div>
+                        <div id="next2" class="btn__prev" onclick="nextPrev(+1)">Next Step &#8594;</div>
                     </div>
                 </div>
             </div>
@@ -131,7 +139,21 @@
             <div id="step3" class="step">
                 <div class="left__content">
                     <div class="left__text">
-                        <div class="text__header">Card</div>
+                        <div class="card__body">
+                            <div class="card__visa">
+                                <div class="visa__logo">VISA</div>
+                            </div>
+                            <div class="card__chip">
+                                <div class="chip">Chip</div>
+                            </div>
+                            <div class="card__number">
+                                <div class="card__code" id="namberHolderText">2344 4544 4523 3453</div>
+                            </div>
+                            <div class="card__year">
+                                <div class="card__name" id="nameHolderText">Vlad Nick</div>
+                                <div class="year" id='dateHolderText'>12/23</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="left__botom">
                         <div id="back2" class="btn__prev" onclick="nextPrev(-1)">&larr; Privios Step</div>
@@ -139,21 +161,24 @@
                 </div>
                 <div class="right__content">
                     <div class="right__text">
-                        <form>
+                        <form action="#" id="paymentForm">
                             <div class="text__header">Payment Details</div>
                             <div class="input__top" data-top="Name on Card">
-                                <input type="text" placeholder="Vlad Nick" />
+                                <input type="text" id='nameInput' oninput="updateName()" value=""
+                                    placeholder="Vlad Nick" onblur="requiredField(this)" required />
                             </div>
-                            <div class="input__top" data-top="Card Number"
-                                title="type in the card number without spaces">
-                                <input type="text" placeholder="xxxx xxxx xxxx xxxx" />
+                            <div class="input__top" data-top="Card Number">
+                                <input type="text" value="" id="namberInput" oninput="updateNumber()"
+                                    placeholder="xxxx xxxx xxxx xxxx" onblur="requiredField(this)" required />
                             </div>
                             <div class="date__cvv">
-                                <div class="input__top" id="year" data-top="Valid Through">
-                                    <input type="text" placeholder="01/25" />
+                                <div class="input__top" id="valid" data-top="Valid">
+                                    <input type="text" id="dateInput" oninput="updateDate()" value=""
+                                        placeholder="01/25" onblur="requiredField(this)" required />
                                 </div>
                                 <div class="input__top" id="cvv" data-top="CVV">
-                                    <input type="text" placeholder="111" />
+                                    <input type="text" value="" placeholder="111" onblur="requiredField(this)"
+                                        required />
                                 </div>
                             </div>
                             <button class="button__pay" onclick="nextPrev(+1)">pay<span>$1000.00</span></button>
@@ -186,10 +211,10 @@
                 </div>
                 <div class="right__content">
                     <div class="right__text">
-                        <div class="text__header">Thanks for your order </div>
+                        <div class="text__header">Thanks for order <br> payment was successfully</div>
                     </div>
                     <div class="right__botom">
-                        <div class="btn__next">Close</div>
+                        <div class="btn__prev">Close</div>
                     </div>
                 </div>
             </div>
@@ -197,7 +222,6 @@
         </div>
     </div>
     <script src="main.js"></script>
-
 </body>
 
 </html>
