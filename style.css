@@ -16,6 +16,8 @@ body{
      font-family: "Roboto", sans-serif;
 }
 .content__body{
+    max-height: 450px;
+    max-width: 900px;
     height: 55%;
     width: 60%;
 }
