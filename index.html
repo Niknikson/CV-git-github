@@ -4,134 +4,92 @@
 <head>
     <title>Order</title>
     <meta charset="utf-8">
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <link rel="stylesheet" href='style.css'>
 </head>
 
 <body>
-
-    <div class="content__body">
+     <div id="content_body" class="content__body"> 
         <div class="step__nav">
-            <div class="nav__step">
-                <div class="nav__text">YOUR ORDER</div>
-            </div>
-            <div class="nav__step">
-                <div class="nav__text">SHIPPING DETAILS</div>
-            </div>
-            <div class="nav__step">
-                <div class="nav__text">PAYMENT DETAILS</div>
-            </div>
-            <div class="nav__step">
-                <div class="nav__text">CONFIRMATION</div>
-            </div>
+            <button id="navStep1" class="navbtn__step  active">
+                <div  class="nav__text">YOUR ORDER</div>
+            </button>
+            <button id="navStep2" disabled="disabled"  class="navbtn__step">
+                <div  class="nav__text">SHIPPING DETAILS</div>
+            </button>
+            <button id="navStep3" disabled="disabled"  class="navbtn__step">
+                <div  class="nav__text">PAYMENT DETAILS</div>
+            </button>
+            <button id="navStep4" disabled="disabled"  class="navbtn__step">
+                <div  class="nav__text">CONFIRMATION</div>
+            </button>
         </div>
 
         <div class="step__content">
-            <div id="step1" class="step ">
-                <div class="left__content">
-                    <div class="left__text">
-                        <div class="img__laptop">
-                            <img src="https://brain.com.ua/static/images/prod_img/5/0/U0463250_big.jpg" alt="Leopard">
-                        </div>
-                    </div>
-                    <div class="left__botom">
-                    </div>
-                </div>
-                <div class="right__content">
-                    <div class="right__text">
-                        <div class="text__header">Leptop Msi Leopard</div>
-                        <p class="text__about">Экран 15.6" IPS (1920x1080) Full HD 144 Гц, матовый / Intel Core
-                            i5-10300H (2.5 - 4.5 ГГц) /
-                            RAM 16 ГБ / SSD 512 ГБ /
-                            nVidia GeForce GTX 1650 Ti, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС / 2.39 кг /
-                            черный</p>
-                        <div class="instok"> In stok 3</div>
-                        <div class="price">Prise: $1000</div>
-                    </div>
-                    <div class="right__botom">
-
-                        <div id="next1" class="btn__prev" onclick="nextPrev(+1)">Next Step &#8594;</div>
+            
+            <div id="step1" class="step active">
+                <div class="items__body">
+                  <div id="listItems" class="header__list">
+    <div class="item">Item</div>
+    <div class="quantity">Quantity</div>
+    <div class="price">Price</div>
                     </div>
                 </div>
             </div>
             <div id="step2" class="step">
                 <div class="left__content">
                     <div class="left__text">
-                        <form>
+                        <form id="contactForm">
                             <div class="text__header">Contact Details</div>
                             <div class="date__cvv">
-                                <div class="input__top" data-top="Name">
-                                    <input type="text" placeholder="" onblur="requiredField(this)" required />
+                                <div class="input__top" data-top="Name*">
+                                    <input class="inputs__ditails" id="inputName" type="text" placeholder="" />
                                 </div>
-                                <div class="input__top" id="surname" data-top="Surname">
-                                    <input type="text" placeholder="" onblur="requiredField(this)" required />
+                                <div class="input__top" id="surname" data-top="Surname*">
+                                    <input class="inputs__ditails" type="text" placeholder="" />
                                 </div>
                             </div>
-                            <div class="input__top" data-top="Email">
-                                <input type="email" placeholder="" onblur="requiredField(this)" required />
+                            <div class="input__top" data-top="Email*">
+                                <input class="inputs__ditails" type="email" placeholder=""/>
                             </div>
-                            <div class="input__top" data-top="Phone number">
-                                <input type="phone" placeholder="" onblur="requiredField(this)" required />
+                            <div class="input__top" data-top="Phone number*">
+                                <input class="inputs__ditails" type="phone" placeholder="" />
                             </div>
                         </form>
-                    </div>
-                    <div class="left__botom">
-                        <div id="back1" class="btn__prev" onclick="nextPrev(-1)">&larr; Privios Step</div>
                     </div>
                 </div>
                 <div class="right__content">
                     <div class="right__text">
-                        <form>
+                        <form id="shippingForm">
                             <div class="text__header">Shipping Details</div>
-                            <select class="select__botton" onchange="createInput(this)">
-                                <option value="0">Ukrain</option>
-                                <option value="1">Canada</option>
-                                <option value="2">US</option>
-                                <option value="3">UK</option>
+                            <select id="selectCountry" class="select__botton" >
+                                <option value="Canada">Canada</option>
+                                <option value="UK">UK</option>
+                                <option value="Ukrain">Ukrain</option>
+                                <option value="US">US</option>
                             </select>
                             <div id="selected1">
-                                <div class="input__top" id="afterAddInput" data-top="Region">
-                                    <input type="text" placeholder="" onblur="requiredField(this)" required />
+                                <div class="input__top" id="afterAddInput" data-top="Region*">
+                                    <input   type="text" placeholder=""/>
                                 </div>
                                 <div autocomplete="off" id="removeInput">
                                     <div class="autocomplete">
-                                        <div class="input__top" data-top="City">
-                                            <input id="myInput" type="text" name="myCountry" placeholder=""
-                                                onblur="requiredField(this)" required />
+                                        <div id="inputAutocomplited" class="input__top" data-top="City*">
+                                            <div autocomplete="off" class="autocomplete" >
+                                                <input id="myInput" type="text" name="myCountry" placeholder="">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="date__cvv">
-                                    <div class="input__top" data-top="Street">
-                                        <input type="text" placeholder="" onblur="requiredField(this)" required />
+                                    <div class="input__top" id="stret" data-top="Street*">
+                                        <input type="text" placeholder="" />
                                     </div>
-                                    <div class="input__top" id="cvv" data-top="№">
-                                        <input type="text" placeholder="" onblur="requiredField(this)" required />
+                                    <div class="input__top"  id="numberHous" data-top="№*">
+                                        <input type="text" placeholder="" />
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div id="selected2">
-                                <div class="input__top"  data-top="Region ">
-                                    <input type="text" placeholder="" onblur="requiredField(this)" required/>
-                                </div>
-                                <div class="input__top"  data-top="City">
-                                    <input type="text" placeholder="" onblur="requiredField(this)" required/>
-                                </div>
-                                <div class="date__cvv">
-                                    <div class="input__top"  data-top="Street">
-                                        <input type="text" placeholder="" onblur="requiredField(this)" required/>
-                                    </div>
-                                    <div class="input__top" id="cvv" data-top="№">
-                                        <input type="text" placeholder="" onblur="requiredField(this)" required/>
-                                    </div>
-                                </div>
-                            </div> -->
                         </form>
-                    </div>
-                    <div class="right__botom">
-                        <div id="next2" class="btn__prev" onclick="nextPrev(+1)">Next Step &#8594;</div>
                     </div>
                 </div>
             </div>
@@ -141,87 +99,70 @@
                     <div class="left__text">
                         <div class="card__body">
                             <div class="card__visa">
-                                <div class="visa__logo">VISA</div>
+                                <img id="masterLogo"  class="master__logo" 
+                                    src="img/master-card-logo.svg" alt="logo">
+                                <img id="visaLogo" class="visa__logo" src="img/visa-logo.svg" alt="logo">
                             </div>
                             <div class="card__chip">
-                                <div class="chip">Chip</div>
+                                <div ><img class="chip" src="img/credit-card-chip.svg" alt=""></div>
                             </div>
                             <div class="card__number">
-                                <div class="card__code" id="namberHolderText">2344 4544 4523 3453</div>
+                                <div class="card__code" id="cardNumberText">0000 0000 0000 0000</div>
                             </div>
                             <div class="card__year">
-                                <div class="card__name" id="nameHolderText">Vlad Nick</div>
-                                <div class="year" id='dateHolderText'>12/23</div>
+                                <div class="card__name" id="holderNameText">Holder Name</div>
+                                <div class="year" id='cardValidText'>12/23</div>
                             </div>
                         </div>
                     </div>
-                    <div class="left__botom">
-                        <div id="back2" class="btn__prev" onclick="nextPrev(-1)">&larr; Privios Step</div>
-                    </div>
+                    
                 </div>
                 <div class="right__content">
                     <div class="right__text">
-                        <form action="#" id="paymentForm">
+                        <form  id="paymentForm">
                             <div class="text__header">Payment Details</div>
-                            <div class="input__top" data-top="Name on Card">
-                                <input type="text" id='nameInput' oninput="updateName()" value=""
-                                    placeholder="Vlad Nick" onblur="requiredField(this)" required />
+                            <div class="input__top" data-top="Name on Card*">
+                                <input class="inputs__payment" type="text" id='holderNameInput'  value=""
+                                    placeholder="Vlad Nick"  />
                             </div>
-                            <div class="input__top" data-top="Card Number">
-                                <input type="text" value="" id="namberInput" oninput="updateNumber()"
-                                    placeholder="xxxx xxxx xxxx xxxx" onblur="requiredField(this)" required />
+                            <div class="input__top" data-top="Card Number*">
+                                <input class="inputs__payment" type="text" value="" id="cardNumerInput" 
+                                    placeholder="xxxx xxxx xxxx xxxx" maxlength="16"/>
                             </div>
                             <div class="date__cvv">
-                                <div class="input__top" id="valid" data-top="Valid">
-                                    <input type="text" id="dateInput" oninput="updateDate()" value=""
-                                        placeholder="01/25" onblur="requiredField(this)" required />
+                                <div class="input__top" id="validInput" data-top="Valid*">
+                                    <input class="inputs__payment" type="text" id="dateInput"  value=""
+                                        placeholder="01/25" maxlength="4"   />
                                 </div>
-                                <div class="input__top" id="cvv" data-top="CVV">
-                                    <input type="text" value="" placeholder="111" onblur="requiredField(this)"
-                                        required />
+                                <div class="input__top"  data-top="CVV*">
+                                    <input class="inputs__payment" type="text" id="cvvInput" value="" placeholder="111" 
+                                      minlength="3"  maxlength="3" />
                                 </div>
                             </div>
-                            <button class="button__pay" onclick="nextPrev(+1)">pay<span>$1000.00</span></button>
+                            <button class="button__pay" id="btnPay">pay<span>$1000.00</span></button>
                         </form>
                     </div>
                     <div class="right__botom">
-
                     </div>
                 </div>
             </div>
 
             <div id="step4" class="step">
-                <div class="left__content">
-                    <div class="left__text">
-                        <div class="text__header">Order Details</div>
-                        <div class="order__details">
-                            <div class="order__item">
-                                <img src="https://brain.com.ua/static/images/prod_img/5/0/U0463250_big.jpg"
-                                    alt="Leopard">
-                                <div class="order__text">
-                                    Leptop Msi Leopard
-                                    <div class="price">Prise: $1000</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="left__botom">
-                        <div id="back3" class="btn__prev" onclick="nextPrev(-1)"> &larr; Privios Step</div>
-                    </div>
-                </div>
-                <div class="right__content">
-                    <div class="right__text">
-                        <div class="text__header">Thanks for order <br> payment was successfully</div>
-                    </div>
-                    <div class="right__botom">
-                        <div class="btn__prev">Close</div>
-                    </div>
-                </div>
+                <img class='confir__content' src="https://thumbs.dreamstime.com/b/%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD-%D0%B7%D0%BD%D0%B0%D1%87%D0%BE%D0%BA-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0-%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%D0%B0-%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%D0%B0-%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD%D0%B0-%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BE%D0%BA-135610540.jpg"
+                    alt="Logo">
             </div>
 
+            <div class="btn__area">           
+                    <div id="back" class="btn__prev">&larr; Privios Step</div>
+                    <div id="next" class="btn__next">Next Step &#8594;</div>
+            </div>
         </div>
-    </div>
-    <script src="main.js"></script>
+    </div> 
+    <script src="./steps/controller.js"></script>
+    <script src="./steps/view.js"></script>
+    <script src="./steps/model.js"></script>
+    <script src="app.js"></script>
+    <script src="autocompit.js"></script>
 </body>
 
 </html>
