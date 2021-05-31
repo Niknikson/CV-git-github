@@ -1,22 +1,25 @@
 var currentStep = 0;
 showTab(currentStep);
-function showTab(n) {
-  var step = document.getElementsByClassName("step");
+
+function showStep(n) {
+  let step = document.getElementsByClassName("step");
   step[n].classList.add("active");
   StepIndicator(n);
 }
+
 function nextPrev(n) {
-  var navStep = document.getElementsByClassName("nav__step");
-  var step = document.getElementsByClassName("step");
+  let navStep = document.getElementsByClassName("nav__step");
+  let step = document.getElementsByClassName("step");
   if (n == 1 && !validate()) return false;
   step[currentStep].classList.remove("active");
   navStep[currentStep].classList.remove("active");
   currentStep = currentStep + n;
-  showTab(currentStep);
+  showStep(currentStep);
 }
+
 function validate() {
-  var step,
-    y,
+  let step,
+    input,
     i,
     valid = true;
   step = document.getElementsByClassName("step");
@@ -26,9 +29,6 @@ function validate() {
       input[i].style.borderBottomColor = "#e74c3c";
       valid = false;
     }
-  }
-  if (valid) {
-    document.getElementsByClassName("step")[currentStep].className += " finish";
   }
   return valid;
 }
@@ -49,30 +49,11 @@ function requiredField(input) {
 }
 
 function StepIndicator(n) {
-  var navStep = document.getElementsByClassName("nav__step");
+  let navStep = document.getElementsByClassName("nav__step");
   navStep[n].classList.add("active");
 }
 
-function updateName() {
-  document.getElementById("nameHolderText").innerText =
-    document.getElementById("nameInput").value;
-}
 
-function updateNumber() {
-  if (document.getElementById("namberInput").value.length <= 16) {
-    document.getElementById("namberHolderText").innerText =
-      document.getElementById("namberInput").value;
-  } else {
-    document.getElementById("namberInput").style.borderBottomColor = "red";
-  }
-  // document.getElementById("namberHolderText").innerText =
-  //   document.getElementById("namberInput").value;
-}
-
-function updateDate() {
-  document.getElementById("dateHolderText").innerText =
-    document.getElementById("dateInput").value;
-}
 
 function createInput(element) {
   let addInput = document.getElementById("afterAddInput");
@@ -99,15 +80,39 @@ function createInput(element) {
     addInput.insertAdjacentHTML(
       "afterend",
       `<div autocomplete="off" id="removeInput">
-                                    <div class="autocomplete" >
-                                        <div class="input__top" data-top="City"  >
-                                        <input id="myInput" type="text" name="myCountry" placeholder="" onblur="requiredField(this)" required/>
-                                        </div> 
-                                    </div>
-                                </div>`
+        <div class="autocomplete" >
+           <div class="input__top" data-top="City of Ukrain"  >
+              <input id="myInput" type="text" name="myCountry" placeholder="" onblur="requiredField(this)" required/>
+            </div> 
+        </div>
+      </div>`
     );
   }
 }
+
+
+function updateName() {
+  document.getElementById("nameHolderText").innerText =
+    document.getElementById("nameInput").value;
+}
+
+function updateNumber() {
+  if (document.getElementById("namberInput").value.length <= 16) {
+    document.getElementById("namberHolderText").innerText =
+      document.getElementById("namberInput").value;
+  } else {
+    document.getElementById("namberInput").style.borderBottomColor = "red";
+  }
+  // document.getElementById("namberHolderText").innerText =
+  //   document.getElementById("namberInput").value;
+}
+
+function updateDate() {
+  document.getElementById("dateHolderText").innerText =
+    document.getElementById("dateInput").value;
+}
+
+
 
 // autocomplete
 function autocomplete(inp, arr) {
@@ -242,11 +247,4 @@ var countries = [
 ];
 autocomplete(document.getElementById("myInput"), countries);
 
-// function funSelected(selected1, selected2, element) {
-//   document.getElementById(selected1).style.display = "none";
-//   document.getElementById(selected2).style.display = "none";
-//   document.getElementById(selected1).style.display =
-//     element.value == 0 ? "block" : "none";
-//   document.getElementById(selected2).style.display =
-//     element.value > 0 ? "block" : "none";
-// }
+

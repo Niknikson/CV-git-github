@@ -5,23 +5,38 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300");
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 
+input[type="number"] {
+	-moz-appearance: textfield;
+	-webkit-appearance: textfield;
+	appearance: textfield;
+} 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	display: none;
+}
+
+
+
 
 body{
-    background-color: gainsboro; 
+    background-color: whitesmoke; 
     height: 100vh;
     margin: 0; 
     display: flex;
     align-items: center;
     justify-content: center;
      font-family: "Roboto", sans-serif;
+     
 }
 .content__body{
     min-width: 490px;
-    max-height: 450px;
-    max-width: 900px;
-    height: 55%;
-    width: 60%;
+    max-height: 550px;
+    max-width: 850px;
+    height: 75%;
+    width: 65%;
+    box-shadow: 0px 0px 20px -6px rgb(34 60 80 / 20%);
 }
+
 
 /* nav menu */
 .step__nav{
@@ -36,47 +51,72 @@ body{
  justify-content: space-around;
  align-items: center;
 }
-.nav__step{
-    height: 100%;
-    display: flex;
-    align-items: center;
-  
+.navbtn__step{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  font-weight: 600;
 }
-.nav__step.active{
-    height: 100%;
-    display: flex;
-    align-items: center;
-    border-bottom: 2px solid #3082ac;
-    color: #3082ac;
+.navbtn__step.active{
+  transition:  0.25s;
+  border-bottom: 2px solid #3082ac;
+  color: #3082ac;
 }
 .nav__text{
-    font-size: 0.5rem;
+  font-size: 0.5rem;
 }
+
 /* steps content */
 .step__content{
-  background-color: white;
-  height: 100%;
+  background-color: rgba(255, 255, 255, 0.87);
+  height: 90%;
   padding: 5px;
-  /* border: 2px solid blue; */
 }
 .step{
  background-color: white;
- height: 100%;
+ height: 80%;
  border-radius: 0.5%;
- display: flex;
- flex-direction: row;
- /* border: 2px solid blue; */
  display: none;
 }
 .step.active{
  background-color: white;
- height: 100%;
+ height: 80%;
  border-radius: 0.5%;
- display: flex;
- flex-direction: row;
- /* border: 2px solid blue; */
- display: flex;
+ display:flex;
 }
+.btn__area{
+  padding: 20px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+.btn__next{
+    color: #3082ac;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 0.6rem;
+    font-weight: 700;
+}
+.btn__prev{
+    visibility: hidden;
+    color: #3082ac;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 0.6rem;
+    font-weight: 700;
+}
+.btn__prev:hover {
+  transform: scale(1.05);
+}
+.btn__next:hover {
+  transform: scale(1.05);
+}
+
+
 /* left par content */
 .left__content{
     height: 100%;
@@ -85,21 +125,15 @@ body{
     flex-direction: column;
 }
 .left__text{
+  padding: 10px;
     height: 90%;
     /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
     align-items: center; 
-    justify-content: center; 
+    justify-content: center;
 }
-.left__botom{
-    padding: 5px;
-    height: 10%;
-    /* border: 1px solid black; */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
+
 /* right part content */
 .right__content{
     height: 100%;
@@ -113,15 +147,10 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center ;
+    justify-content: center;
     
 }
-.right__botom{
-    padding: 5px;
-    height: 10%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
+
 /* comon parts of contet */
 .text__header{
     margin-top: 10px;
@@ -129,34 +158,114 @@ body{
     font-size: 1rem ;
     font-weight: bold;
 }
-.btn__prev{
-    color: #3082ac;
-    cursor: pointer;
-    margin: 5px;
-    font-size: 0.6rem;
-    font-weight: 700;
-}
+
 
 
 /* step1 YOUR ORDER parts  */
+
+.items__body{
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.header__list{
+  position: relative;
+    font-size: 10px;
+    font-weight: 400;
+    color: #d3d3d3;
+    width: 90%;
+    padding: 12px 5% 12px 5%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-areas: "product-title . quantity-title price-title";
+}
+
+.item{
+    grid-area: product-title;
+    text-align: left;
+}
+.quantity{
+grid-area: quantity-title;
+    text-align: center;
+    padding-left: 3vw;
+  
+}
+.price{
+    grid-area: price-title;
+    text-align: right;
+    padding-left: 3vw;
+}
+
+.header__list::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 90%;
+    border-bottom: 1px solid #e2e2e2;
+}
+.items__content{
+    position: relative;
+    width: 90%;
+    padding: 18px 5%;
+    font-size: 12px;
+    display: grid;
+    grid-template-rows: 20px;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-areas: "product-photo product-description quantity price";
+    overflow: hidden;
+}
+.order__img{
+    grid-area: product-photo;
+    display: flex;
+    align-items: center;
+    max-height: 100%;
+}
+.order__details{
+  grid-area: product-description;
+    padding-left: 3vw;
+    overflow: hidden;
+}
+.order__quantity{
+grid-area: quantity;
+    padding-left: 3vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.order__price{
+grid-area: price;
+    text-align: right;
+    padding-left: 3vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
 .img__laptop img{
   margin-left: 35px;
-    width: 80%;
+    width: 70%;
     object-fit:fill;
 }
-p{
-    font-size: 0.5rem ;
-}
+
 .instok{
     color: green;
     font-size: 0.6rem;
 }
-.price{
-    margin-top: 10px;
-    color: rgba(255, 0, 0, 0.637);
-    font-size: 0.8rem;
-}
+
 /* step2 SHIPPING DETAILS parts */
+#stret{
+  margin-right: 20px;
+}
+
 .form__contact  input{
   width: 100%;
   padding: 12px 20px;
@@ -168,9 +277,8 @@ p{
 #surname{
     margin-left: 20px;
 }
-select{
-    border-radius: 3px;
-    border: 1px solid #d7dbdb;
+.select__botton{
+    border: none;
     box-shadow: inset 0 -1px 0 0 #d7dbdb;
     color: #464c4f;
     display: inline-block;
@@ -180,6 +288,7 @@ select{
     line-height: 20px;
     padding: 0 5px;
     margin-bottom: 15px;
+    width: 100%;
 }
 #selected1{
   display: block;
@@ -187,8 +296,7 @@ select{
 /*    autocomplete    */
 .autocomplete {
   width: 100%;
-  position: relative;
-  display: inline-block;
+
 }
 .autocomplete-items {
   position: absolute;
@@ -220,41 +328,61 @@ select{
 
 /* step3 PAYMENT DETAILS parts */
 
+.master__logo{
+  height: 100%;
+  display: none;
+}
+.visa__logo{
+  height: 100%;
+}
 .card__body{
+  max-width: 280px;
+  min-width: 200px;
   font-size: 1rem;
   color: whitesmoke;
-  border-radius: 7px;
-  padding: 10px;
+  border-radius: 15px;
+  padding: 20px;
   width: 78%;
-  height: 50%;
-  background-color: #3580aa;
+  height: 53%;
+  background: linear-gradient(90deg, #3081ac 0%, #4197be 100%);
   display: flex;
   flex-direction: column;
+  box-shadow: 0px 0px 20px -6px rgb(34 60 80 / 20%);
 }
 .card__visa{
   width: 100%;
+  height: 28px;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
 }
-.visa__logo{
-  margin-right: 10px;
-  font-size: 1.7rem;
+#masterLogo{
+  display: none;
+  margin-right: 6px;
+  font-size: 1.2rem;
+}
+#visaLogo{
+  margin-right: 6px;
+  font-size: 1.2rem;
+}
+.chip{
+  height: 100%;
 }
 .card__chip{
+  height: 28px;
   width: 100%;
-  font-size: 1.5rem;
   display: flex;
   justify-content: flex-start;
 }
 .card__number{
-  margin-top: 0.2rem;
+  margin-top: 0.8rem;
   width: 100%;
   font-size: 1rem;
   display: flex;
   justify-content: flex-start;
 }
 .card__year{
-  margin-top: 1.6rem;
+  margin-top: 1rem;
   width: 100%;
   display: flex;
   justify-self: flex-end;
@@ -308,17 +436,18 @@ form input:focus + h7 {
     display: flex;
     flex-direction: row;
 }
-#valid {
+#validInput {
   margin-right: 13px;
 }
-#cvv {
+#cvvInput {
+  width: 100%;
   margin-left: 13px;
 }
 .button__pay{
   margin-top: 1.5rem;
   height: 35px;
   width: 100%;
-  background-color: #3580aa;
+  background: linear-gradient(90deg, #3081ac 0%, #4197be 100%);
   border-radius: 5px;
   border: none !important;
   letter-spacing: .5px;
@@ -327,8 +456,8 @@ form input:focus + h7 {
   cursor: pointer;
   text-transform: uppercase;
 }
-button:focus {
-  outline: none;
+.button__pay:hover{
+  transform: scale(1.03);
 }
 button span {
   margin-left: 3px;
@@ -338,6 +467,14 @@ button span {
 }
 
 /* step4 CONFIRMATION parts */
+
+.confir__content{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 .order__details{
     display: flex;
    flex-direction: row;
@@ -364,125 +501,4 @@ button span {
     align-items: center ;
 }
 
-
-/* madia */
-@media (max-width: 900px) {
-  .text__header{
-    font-size: 13px;
-  }
-  .content__body{
-    height: 75%;
-    width: 80%;
-  }
-    .order__text{
-    font-size: x-small;
-}
-
-}
-
-@media (max-width: 680px) {
-   .nav__text{
-    font-size: 10px;
-}
-  .text__header{
-    font-size: 10px;
-  }
-  .content__body{
-    height: 80%;
-    width: 80%;
-  }
-   .order__text{
-    font-size: 10px;
-}
- .price{
-    font-size: 7px;
-  }
-   .text__about{
-    font-size: 8px;
-  }
-  .instok{
-    font-size: 7px;
-  }
-   .select__botton{
-    font-size: 8px;
-    width: 50%;
-    height: 15px;
-  }
-  .input__top{
-       font-size: 6px;
-  }
-  .input__top input{
-       font-size: 6px;
-  }
-  .input__top:after{
-    font-size: 5px;
-  }
-  .btn__prev{
-    font-size:8px ;
-  }
-}
-
-@media (max-width: 500px) {
-  .nav__text{
-    font-size: 7px;
-}
-  .text__header{
-    font-size: 8px;
-  }
-  .content__body{
-    height: 100%;
-    width: 90%;
-  }
-  .img__laptop{
-    width: 130px;
-    height: 150px;
-  }
-  .text__about{
-    font-size: 5px;
-  }
-  .instok{
-    font-size: 6px;
-  }
-  .select__botton{
-    width: 60%;
-    height: 15px;
-  }
-  .btn__prev{
-    font-size:6px ;
-  }
-
-}
-
-@media (max-width: 400px) {
-   .text__header{
-    font-size: 5px;
-  }
-  .nav__text{
-    font-size: 5px;
-}
-  
-  .content__body{
-    height: 100%;
-    width: 100%;
-  }
-  .price{
-    font-size: 5px;
-  }
-  .text__about{
-    font-size: 3px;
-  }
-  .price{
-    font-size: 4px;
-  }
-  .instok{
-    font-size: 4px;
-  }
-   .select__botton{
-    width: 80%;
-    height: 15px;
-  }
-  .btn__prev{
-    font-size:5px ;
-  }
-}
 

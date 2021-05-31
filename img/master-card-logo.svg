@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="20.2mm" height="12.5mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 2020 1250"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:none}
+    .fil2 {fill:#EB001B;fill-rule:nonzero}
+    .fil3 {fill:#F79E1B;fill-rule:nonzero}
+    .fil1 {fill:#FF5F00;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="Page-1">
+   <g id="mc_vrt_pos">
+    <rect id="Rectangle" class="fil0" x="-251.11" y="-247.6" width="2511.54" height="2063.75"/>
+    <g id="Group">
+     <g>
+      <rect id="Rectangle_0" class="fil1" x="733.56" y="137.82" width="542.25" height="972.96"/>
+      <path id="Path" class="fil2" d="M767.98 624.3c-0.17,-189.86 87.11,-369.26 236.7,-486.48 -254.08,-199.41 -618.98,-170.39 -838.24,66.67 -219.26,237.06 -219.26,602.56 0,839.62 219.26,237.06 584.16,266.08 838.24,66.67 -149.59,-117.22 -236.87,-296.61 -236.7,-486.48l0 0z"/>
+      <path id="Path_1" class="fil3" d="M2007.33 624.3c0,236.9 -135.45,453.01 -348.85,556.55 -213.4,103.54 -467.27,76.33 -653.8,-70.07 149.44,-117.33 236.69,-296.65 236.69,-486.48 0,-189.82 -87.25,-369.15 -236.69,-486.48 186.53,-146.4 440.4,-173.61 653.8,-70.07 213.4,103.54 348.85,319.65 348.85,556.55l0 0z"/>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>
